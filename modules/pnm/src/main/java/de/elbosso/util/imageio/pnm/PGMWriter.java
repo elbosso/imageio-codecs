@@ -109,15 +109,23 @@ public class PGMWriter  extends javax.imageio.ImageWriter
 				arg1.getRenderedImage().copyData(raster);
 			}
 			byte[] scanline=new byte[width];
+			int br=0xff;
+			int bg=0xff;
+			int bb=0xff;
 			for (int y = 0; y < height; ++y)
 			{
 				for (int x = 0; x < width; ++x)
 				{
 					int p=bimg.getRGB(x, y);
-					double r=(p&0xff0000)>>16;
-					double g=(p&0xff00)>>8;
-					double b=p&0xff;
-					scanline[x]=(byte)(r*.299+g*.587+b*.114);
+					double a=((p>>24)&0xff);
+					double r=((p&0xff0000)>>16);
+					double g=((p&0xff00)>>8);
+					double b=(p&0xff);
+					r=((255.0-a)*br+a*r)/255.0;
+					g=((255.0-a)*bg+a*g)/255.0;
+					b=((255.0-a)*bb+a*b)/255.0;
+					scanline[x]=(byte)java.lang.Math.round(r/3+g/3+b/3);
+//					scanline[x]=(byte)java.lang.Math.round(r*.299+g*.587+b*.114);
 				}
 				os.write(scanline);
 			}

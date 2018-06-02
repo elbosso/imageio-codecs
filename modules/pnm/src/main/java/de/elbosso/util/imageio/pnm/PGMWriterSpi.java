@@ -55,7 +55,7 @@ public class PGMWriterSpi extends javax.imageio.spi.ImageWriterSpi
 			new java.lang.String[]{".pgm"},
 			new java.lang.String[]{"image/x-pbm", "image/x-portable-bitmap"},
 			"de.elbosso.util.imageio.pnm.PGMWriter",
-			new java.lang.Class[]{javax.imageio.stream.ImageOutputStream.class},
+			new java.lang.Class[]{javax.imageio.stream.ImageOutputStream.class,java.io.File.class},
 			new java.lang.String[]{"de.elbosso.util.imageio.pnm.PNMReaderSpi"},
 			false,
 			null,
@@ -72,10 +72,7 @@ public class PGMWriterSpi extends javax.imageio.spi.ImageWriterSpi
 	@Override
 	public boolean canEncodeImage(ImageTypeSpecifier arg0)
 	{
-		boolean rv=(((arg0.getBufferedImageType()==java.awt.image.BufferedImage.TYPE_INT_ARGB)||(arg0.getBufferedImageType()==java.awt.image.BufferedImage.TYPE_INT_RGB))||
-				((arg0.getBufferedImageType()==java.awt.image.BufferedImage.TYPE_3BYTE_BGR)||(arg0.getBufferedImageType()==java.awt.image.BufferedImage.TYPE_BYTE_INDEXED)));
-		if(rv==false)
-			if(CLASS_LOGGER.isTraceEnabled())CLASS_LOGGER.trace(arg0.getBufferedImageType());
+		boolean rv=true;
 		return rv;
 	}
 
