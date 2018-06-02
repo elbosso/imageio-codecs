@@ -38,8 +38,8 @@ public class TGAReaderSpi extends javax.imageio.spi.ImageReaderSpi
 {
 	public TGAReaderSpi()
 	{
-		super("NetSys.IT",
-			"0.1.0",
+		super("Jürgen Key",
+				"1.0.0",
 			new java.lang.String[]{"tga","tpic"},
 			new java.lang.String[]{".tga",".tpic"},
 			new java.lang.String[]{"image/x-tga", "image/x-targa"},

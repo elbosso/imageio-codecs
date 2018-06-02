@@ -35,6 +35,7 @@ WENN SIE AUF DIE MOEGLICHKEIT EINES SOLCHEN SCHADENS HINGEWIESEN WORDEN SIND.
 
 */
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Locale;
 import javax.imageio.ImageTypeSpecifier;
@@ -47,15 +48,26 @@ import javax.imageio.ImageWriter;
 public class PPMWriterSpi extends javax.imageio.spi.ImageWriterSpi
 {
 	private final static org.apache.log4j.Logger CLASS_LOGGER = org.apache.log4j.Logger.getLogger(PPMWriterSpi.class);
+	private static final java.util.List<java.lang.Integer> supportedTypes=new java.util.LinkedList();
+	static
+	{
+		supportedTypes.add(BufferedImage.TYPE_3BYTE_BGR);
+		supportedTypes.add(BufferedImage.TYPE_4BYTE_ABGR);
+		supportedTypes.add(BufferedImage.TYPE_4BYTE_ABGR_PRE);
+		supportedTypes.add(BufferedImage.TYPE_INT_ARGB);
+		supportedTypes.add(BufferedImage.TYPE_INT_ARGB_PRE);
+		supportedTypes.add(BufferedImage.TYPE_INT_BGR);
+		supportedTypes.add(BufferedImage.TYPE_INT_RGB);
+	}
 	public PPMWriterSpi()
 	{
-		super("NetSys.IT",
-			"0.1.0",
+		super("Jürgen Key",
+			"1.0.0",
 			new java.lang.String[]{"ppm"},
 			new java.lang.String[]{".ppm"},
 			new java.lang.String[]{"image/x-pbm", "image/x-portable-bitmap"},
 			"de.elbosso.util.imageio.pnm.PPMWriter",
-			new java.lang.Class[]{javax.imageio.stream.ImageOutputStream.class},
+			new java.lang.Class[]{javax.imageio.stream.ImageOutputStream.class, java.io.File.class},
 			new java.lang.String[]{"de.elbosso.util.imageio.pnm.PNMReaderSpi"},
 			false,
 			null,
@@ -72,8 +84,7 @@ public class PPMWriterSpi extends javax.imageio.spi.ImageWriterSpi
 	@Override
 	public boolean canEncodeImage(ImageTypeSpecifier arg0)
 	{
-		boolean rv=(((arg0.getBufferedImageType()==java.awt.image.BufferedImage.TYPE_INT_ARGB)||(arg0.getBufferedImageType()==java.awt.image.BufferedImage.TYPE_INT_RGB))||
-				((arg0.getBufferedImageType()==java.awt.image.BufferedImage.TYPE_3BYTE_BGR)||(arg0.getBufferedImageType()==java.awt.image.BufferedImage.TYPE_BYTE_INDEXED)));
+		boolean rv=supportedTypes.contains(java.lang.Integer.valueOf(arg0.getBufferedImageType()));
 		if(rv==false)
 			if(CLASS_LOGGER.isTraceEnabled())CLASS_LOGGER.trace(arg0.getBufferedImageType());
 		return rv;

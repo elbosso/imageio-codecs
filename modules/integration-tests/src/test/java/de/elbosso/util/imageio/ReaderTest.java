@@ -18,4 +18,9 @@ public class ReaderTest
 			}
 		}
 	}
+	@Test
+	public void readPNM()
+	{
+
+	}
 }

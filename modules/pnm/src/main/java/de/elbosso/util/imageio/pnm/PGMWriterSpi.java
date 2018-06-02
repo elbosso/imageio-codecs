@@ -49,8 +49,8 @@ public class PGMWriterSpi extends javax.imageio.spi.ImageWriterSpi
 	private final static org.apache.log4j.Logger CLASS_LOGGER = org.apache.log4j.Logger.getLogger(PGMWriterSpi.class);
 	public PGMWriterSpi()
 	{
-		super("NetSys.IT",
-			"0.1.0",
+		super("Jürgen Key",
+				"1.0.0",
 			new java.lang.String[]{"pgm"},
 			new java.lang.String[]{".pgm"},
 			new java.lang.String[]{"image/x-pbm", "image/x-portable-bitmap"},

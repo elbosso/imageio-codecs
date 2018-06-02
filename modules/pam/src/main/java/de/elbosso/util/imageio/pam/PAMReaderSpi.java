@@ -38,8 +38,8 @@ public class PAMReaderSpi extends javax.imageio.spi.ImageReaderSpi
 {
 	public PAMReaderSpi()
 	{
-		super("NetSys.IT",
-			"0.0.1",
+		super("Jürgen Key",
+				"1.0.0",
 			new java.lang.String[]{"pam"},
 			new java.lang.String[]{".pam"},
 			new java.lang.String[]{"image/x-pbm", "image/x-portable-bitmap"},

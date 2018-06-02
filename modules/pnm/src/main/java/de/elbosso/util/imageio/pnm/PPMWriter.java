@@ -63,13 +63,13 @@ public class PPMWriter  extends javax.imageio.ImageWriter
 	@Override
 	public IIOMetadata convertStreamMetadata(IIOMetadata arg0, ImageWriteParam arg1)
 	{
-		return null;
+		return arg0;
 	}
 
 	@Override
 	public IIOMetadata convertImageMetadata(IIOMetadata arg0, ImageTypeSpecifier arg1, ImageWriteParam arg2)
 	{
-		return null;
+		return arg0;
 	}
 
 	@Override
@@ -109,15 +109,25 @@ public class PPMWriter  extends javax.imageio.ImageWriter
 				arg1.getRenderedImage().copyData(raster);
 			}
 			byte[] scanline=new byte[width*3];
+			int br=0xff;
+			int bg=0xff;
+			int bb=0xff;
 			for (int y = 0; y < height; ++y)
 			{
 				int loop=0;
 				for (int x = 0; x < width; ++x)
 				{
 					int p=bimg.getRGB(x, y);
-					scanline[loop++]=(byte)((p&0xff0000)>>16);
-					scanline[loop++]=(byte)((p&0xff00)>>8);
-					scanline[loop++]=(byte)(p&0xff);
+					int a=((p>>24)&0xff);
+					int r=((p&0xff0000)>>16);
+					int g=((p&0xff00)>>8);
+					int b=(p&0xff);
+					r=((255-a)*br+a*r)/255;
+					g=((255-a)*bg+a*g)/255;
+					b=((255-a)*bb+a*b)/255;
+					scanline[loop++]=(byte)r;
+					scanline[loop++]=(byte)g;
+					scanline[loop++]=(byte)b;
 				}
 				os.write(scanline);
 			}

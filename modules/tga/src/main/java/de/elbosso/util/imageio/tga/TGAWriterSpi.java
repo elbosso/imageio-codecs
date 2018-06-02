@@ -52,8 +52,8 @@ public class TGAWriterSpi extends javax.imageio.spi.ImageWriterSpi
 
 	public TGAWriterSpi()
 	{
-		super("NetSys.IT",
-			"0.1.0",
+		super("Jürgen Key",
+				"1.0.0",
 			new java.lang.String[]{"tga","tpic"},
 			new java.lang.String[]{".tga",".tpic"},
 			new java.lang.String[]{"image/x-tga", "image/x-targa"},

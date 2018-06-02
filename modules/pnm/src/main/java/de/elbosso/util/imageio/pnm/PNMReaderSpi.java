@@ -38,8 +38,8 @@ public class PNMReaderSpi extends javax.imageio.spi.ImageReaderSpi
 {
 	public PNMReaderSpi()
 	{
-		super("NetSys.IT",
-			"0.1.0",
+		super("Jürgen Key",
+				"1.0.0",
 			new java.lang.String[]{"pgm", "pbm", "ppm"},
 			new java.lang.String[]{".pgm", ".pbm", ".ppm"},
 			new java.lang.String[]{"image/x-pbm", "image/x-portable-bitmap"},
