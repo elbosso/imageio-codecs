@@ -4,7 +4,7 @@
     <groupId>de.elbosso.util.imageio</groupId>
     <artifactId>imageio-codecs</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>Assorted image codecs for use with javax.imageio.ImageIO</name>
     <url>http://elbosso.github.io</url>
 
@@ -13,6 +13,7 @@
         <module>modules/pam</module>
         <module>modules/tga</module>
         <module>modules/pnm</module>
+        <module>modules/integration-tests</module>
     </modules>
 
 </project>
