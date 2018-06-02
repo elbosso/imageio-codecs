@@ -43,10 +43,27 @@ public class WriterTest
 		try
 		{
 			java.io.File f=java.io.File.createTempFile("writePGM",".pgm");
-//			f.deleteOnExit();
+			f.deleteOnExit();
 			java.awt.image.BufferedImage bimg=javax.imageio.ImageIO.read(this.getClass().getClassLoader().getResource("240px-Computer.svg_gray.png"));
 			javax.imageio.ImageIO.write(bimg,"pgm",f);
 			java.awt.image.BufferedImage expected=javax.imageio.ImageIO.read(this.getClass().getClassLoader().getResource("240px-Computer.svg_raw.pgm"));
+			java.awt.image.BufferedImage result=javax.imageio.ImageIO.read(f);
+			Assert.assertTrue(imagesAreEqual(result,expected));
+		} catch (IOException e)
+		{
+			Assert.fail(e.getMessage());
+		}
+	}
+	@Test
+	public void writePAM()
+	{
+		try
+		{
+			java.io.File f=java.io.File.createTempFile("writePAM",".pam");
+//			f.deleteOnExit();
+			java.awt.image.BufferedImage bimg=javax.imageio.ImageIO.read(this.getClass().getClassLoader().getResource("240px-Computer.svg.png"));
+			javax.imageio.ImageIO.write(bimg,"pam",f);
+			java.awt.image.BufferedImage expected=javax.imageio.ImageIO.read(this.getClass().getClassLoader().getResource("240px-Computer.svg.pam"));
 			java.awt.image.BufferedImage result=javax.imageio.ImageIO.read(f);
 			Assert.assertTrue(imagesAreEqual(result,expected));
 		} catch (IOException e)
