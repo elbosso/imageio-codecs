@@ -122,9 +122,9 @@ public class PPMWriter  extends javax.imageio.ImageWriter
 					int r=((p&0xff0000)>>16);
 					int g=((p&0xff00)>>8);
 					int b=(p&0xff);
-					r=((255-a)*br+a*r)/255;
-					g=((255-a)*bg+a*g)/255;
-					b=((255-a)*bb+a*b)/255;
+					r=(int)java.lang.Math.round(((255.0-a)*br+a*r)/255.0);
+					g=(int)java.lang.Math.round(((255.0-a)*bg+a*g)/255.0);
+					b=(int)java.lang.Math.round(((255.0-a)*bb+a*b)/255.0);
 					scanline[loop++]=(byte)r;
 					scanline[loop++]=(byte)g;
 					scanline[loop++]=(byte)b;
