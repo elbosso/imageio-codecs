@@ -11,6 +11,7 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/elbosso/imageio-codecs/issues)
 [![GitHub contributors](https://img.shields.io/github/contributors/elbosso/imageio-codecs.svg)](https://GitHub.com/elbosso/imageio-codecs/graphs/contributors/)
 [![Github All Releases](https://img.shields.io/github/downloads/elbosso/imageio-codecs/total.svg)](https://github.com/elbosso/imageio-codecs)
+[![Website elbosso.github.io](https://img.shields.io/website-up-down-green-red/https/elbosso.github.io.svg)](https://elbosso.github.io/)
 
 This project contains some codecs for images not normally supported by java - this was my
 first foray into java spi.
