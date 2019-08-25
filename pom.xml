@@ -7,6 +7,30 @@
     <version>1.0.0</version>
     <name>Assorted image codecs for use with javax.imageio.ImageIO</name>
     <url>http://elbosso.github.io</url>
+    <build>
+        <plugins>
+            <!-- https://github.com/tomasbjerre/git-changelog-maven-plugin/blob/master/git-changelog-maven-plugin-example/pom.xml -->
+            <plugin>
+                <groupId>se.bjurr.gitchangelog</groupId>
+                <artifactId>git-changelog-maven-plugin</artifactId>
+                <version>1.60</version>
+                <executions>
+                    <execution>
+                        <id>GenerateGitChangelogTemplateFromFileAndToken</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>git-changelog</goal>
+                        </goals>
+                        <configuration>
+                            <templateFile>changelog.mustache</templateFile>
+                            <readableTagName>-([^-]+?)$</readableTagName>
+                            <file>CHANGELOG.md</file>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <modules>
         <module>modules</module>
